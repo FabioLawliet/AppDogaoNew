@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{B4C00776-7464-4EBC-B49B-A29FEB636629}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="AppDogao.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="..\..\..\..\..\Downloads\AppDogao-master\AppListaProdutos.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="AppDogao">
+        <MSBuild Projects="AppDogao.dproj"/>
+    </Target>
+    <Target Name="AppDogao:Clean">
+        <MSBuild Projects="AppDogao.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AppDogao:Make">
+        <MSBuild Projects="AppDogao.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="AppListaProdutos">
+        <MSBuild Projects="..\..\..\..\..\Downloads\AppDogao-master\AppListaProdutos.dproj"/>
+    </Target>
+    <Target Name="AppListaProdutos:Clean">
+        <MSBuild Projects="..\..\..\..\..\Downloads\AppDogao-master\AppListaProdutos.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="AppListaProdutos:Make">
+        <MSBuild Projects="..\..\..\..\..\Downloads\AppDogao-master\AppListaProdutos.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="AppDogao;AppListaProdutos"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="AppDogao:Clean;AppListaProdutos:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="AppDogao:Make;AppListaProdutos:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
