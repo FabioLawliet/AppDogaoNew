@@ -1,7 +1,7 @@
 object Dm: TDm
   OldCreateOrder = False
-  Height = 514
-  Width = 793
+  Height = 142
+  Width = 518
   object FDConnection: TFDConnection
     Params.Strings = (
       
@@ -23,6 +23,7 @@ object Dm: TDm
       'select'
       '  *'
       'from pessoa'
+      ''
       '')
     Left = 104
     Top = 16
@@ -89,6 +90,7 @@ object Dm: TDm
     end
   end
   object QueryProduto: TFDQuery
+    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'select'
@@ -126,6 +128,76 @@ object Dm: TDm
     object QueryProdutoimg_produto: TBlobField
       FieldName = 'img_produto'
       Origin = 'img_produto'
+    end
+  end
+  object QueryPedido: TFDQuery
+    Active = True
+    Connection = FDConnection
+    SQL.Strings = (
+      'select'
+      '  *'
+      'from pedido'
+      '')
+    Left = 248
+    Top = 16
+    object QueryPedidoid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object QueryPedidoidpessoa: TIntegerField
+      FieldName = 'idpessoa'
+      Origin = 'idpessoa'
+    end
+    object QueryPedidodatahora: TDateTimeField
+      FieldName = 'datahora'
+      Origin = 'datahora'
+    end
+    object QueryPedidovlrPedido: TBCDField
+      FieldName = 'vlrPedido'
+      Origin = 'vlrPedido'
+      Precision = 8
+      Size = 2
+    end
+    object QueryPedidostatusPedido: TStringField
+      FieldName = 'statusPedido'
+      Origin = 'statusPedido'
+      FixedChar = True
+      Size = 1
+    end
+  end
+  object QueryPedidoItem: TFDQuery
+    Active = True
+    Connection = FDConnection
+    SQL.Strings = (
+      'select'
+      '  *'
+      'from itempedido'
+      '')
+    Left = 328
+    Top = 16
+    object QueryPedidoItemid: TIntegerField
+      FieldName = 'id'
+      Origin = 'id'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+    end
+    object QueryPedidoItemidPedido: TIntegerField
+      FieldName = 'idPedido'
+      Origin = 'idPedido'
+    end
+    object QueryPedidoItemidProduto: TIntegerField
+      FieldName = 'idProduto'
+      Origin = 'idProduto'
+    end
+    object QueryPedidoItemqtdeProduto: TIntegerField
+      FieldName = 'qtdeProduto'
+      Origin = 'qtdeProduto'
+    end
+    object QueryPedidoItemvlrItem: TBCDField
+      FieldName = 'vlrItem'
+      Origin = 'vlrItem'
+      Precision = 8
+      Size = 2
     end
   end
 end

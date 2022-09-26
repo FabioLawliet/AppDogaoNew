@@ -34,12 +34,26 @@ type
     QueryProdutovalor: TBCDField;
     QueryProdutoquantidade: TIntegerField;
     QueryProdutoimg_produto: TBlobField;
+    QueryPedido: TFDQuery;
+    QueryPedidoItem: TFDQuery;
+    QueryPedidoid: TIntegerField;
+    QueryPedidoidpessoa: TIntegerField;
+    QueryPedidodatahora: TDateTimeField;
+    QueryPedidovlrPedido: TBCDField;
+    QueryPedidostatusPedido: TStringField;
+    QueryPedidoItemid: TIntegerField;
+    QueryPedidoItemidPedido: TIntegerField;
+    QueryPedidoItemidProduto: TIntegerField;
+    QueryPedidoItemqtdeProduto: TIntegerField;
+    QueryPedidoItemvlrItem: TBCDField;
     procedure FDConnectionAfterConnect(Sender: TObject);
     procedure FDConnectionBeforeConnect(Sender: TObject);
   private
+    FIdPessoa: Integer;
     { Private declarations }
   public
     { Public declarations }
+    property idPessoaLogada: Integer read FIdPessoa write FIdPessoa;
   end;
 
 var

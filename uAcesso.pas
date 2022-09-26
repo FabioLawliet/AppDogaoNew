@@ -128,13 +128,13 @@ begin
   Tab02_Login.Visible := False;
   Tab03_Cadastro.Visible := False;
 
-  {$IFDEF DEBUG}
-    FAcesso.Visible := False;
-    if not assigned(FPrincipal) then
-      Application.CreateForm(TFPrincipal, FPrincipal);
-
-    FPrincipal.Show;
-  {$IFEND}
+  //{$IFDEF DEBUG}
+  //  FAcesso.Visible := False;
+  //  if not assigned(FPrincipal) then
+  //    Application.CreateForm(TFPrincipal, FPrincipal);
+  //
+  //  FPrincipal.Show;
+  //{$IFEND"}}
 end;
 
 procedure TfAcesso.LayEyeClick(Sender: TObject);
@@ -185,6 +185,8 @@ procedure TfAcesso.lbCadastreSeClick(Sender: TObject);
 begin
   TabControl.ActiveTab := Tab03_Cadastro;
   Tab03_Cadastro.Visible := True;
+  edtEmail.Text := '';
+  edtSenha.Text := '';
 end;
 
 procedure TfAcesso.Rectangle1Click(Sender: TObject);
@@ -195,13 +197,13 @@ begin
     exit;
   end;
 
-  if Tab03_edtNome.Text = '' then
+  if Tab03_edtemail.Text = '' then
   begin
     ShowMessage('Informe um email!');
     exit;
   end;
 
-  if edtSenha.Text <> Tab03_edtSenha2.Text then
+  if Tab03_edtSenha.Text <> Tab03_edtSenha2.Text then
   begin
     ShowMessage('As senhas informadas não sao iguais!');
     exit;
@@ -209,12 +211,23 @@ begin
 
   dm.QueryPessoa.Close();
   dm.QueryPessoa.Open();
-  dm.QueryPessoa.Append;
-  dm.QueryPessoaNome.AsString := Tab03_edtNome.Text;
-  dm.QueryPessoaEmail.AsString := edtEmail.Text;
-  dm.QueryPessoaSenha.AsString := SHA1FromString(edtSenha.Text);
-  dm.QueryPessoa.Post;
-  dm.FDConnection.CommitRetaining;
+  dm.QueryPessoa.Filter := 'email = ' + Tab03_edtemail.Text;
+  dm.QueryPessoa.Filtered := True;
+
+  if (dm.QueryPessoa.RecordCount = 0) then
+  begin
+    dm.QueryPessoa.Append;
+    dm.QueryPessoaNome.AsString := Tab03_edtNome.Text;
+    dm.QueryPessoaEmail.AsString := Tab03_edtEmail.Text;
+    dm.QueryPessoaSenha.AsString := SHA1FromString(Tab03_edtSenha.Text);
+    dm.QueryPessoa.Post;
+    dm.FDConnection.CommitRetaining;
+  end else
+  begin
+    ShowMessage('O email ' + Tab03_edtemail.Text + ' já foi cadastrado! Escolha outro e-mail.');
+    dm.QueryPessoa.Filtered := False;
+    Exit;
+  end;
 
   ShowMessage('Cadastro realizado com sucesso!');
 
@@ -234,6 +247,7 @@ begin
 
   if (not dm.QueryPessoa.IsEmpty) then
   begin
+    dm.idPessoaLogada := dm.QueryPessoaid.AsInteger;
     if not assigned(FPrincipal) then
       Application.CreateForm(TFPrincipal, FPrincipal);
 
