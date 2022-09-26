@@ -90,7 +90,6 @@ object Dm: TDm
     end
   end
   object QueryProduto: TFDQuery
-    Active = True
     Connection = FDConnection
     SQL.Strings = (
       'select'

@@ -6,7 +6,8 @@ uses
   System.Types, System.UITypes, System.Classes, System.Variants, FireDAC.Stan.Param,
   FMX.Types, FMX.Controls, FMX.Forms, FMX.Graphics, FMX.Dialogs, FMX.TabControl,
   FMX.Objects, FMX.Edit, FMX.Layouts, FMX.Controls.Presentation, FMX.StdCtrls, uCadBasico,
-  System.SysUtils, IdHashSHA, FMX.VirtualKeyboard, FMX.Platform, uDataModule;
+  System.SysUtils, IdHashSHA, FMX.VirtualKeyboard, FMX.Platform, uDataModule,
+  System.ImageList, FMX.ImgList, System.Actions, FMX.ActnList;
 
 type
   TfAcesso = class(TForm)
@@ -28,9 +29,6 @@ type
     RectPassword: TRectangle;
     edtSenha: TEdit;
     ImgPassword: TImage;
-    LayEye: TLayout;
-    ImageEyeClose: TImage;
-    ImageEyeOpen: TImage;
     lbCadastreSe: TLabel;
     LayLogo: TLayout;
     Image1: TImage;
@@ -57,20 +55,24 @@ type
     Label5: TLabel;
     Rectangle5: TRectangle;
     Tab03_edtSenha: TEdit;
-    Tab03_LayEye: TLayout;
-    Tab03_ImageEyeClose: TImage;
-    Tab03_ImageEyeOpen: TImage;
     Layout5: TLayout;
     Image4: TImage;
-    procedure LayEyeClick(Sender: TObject);
+    SpeedButton1: TSpeedButton;
+    Tab03_SenhaEye: TRectangle;
+    Tab03_imgCloseEye: TImage;
+    Tab03_imgOpenEye: TImage;
+    Tab02_SenhaEye: TRectangle;
+    Tab02_imgCloseEye: TImage;
+    Tab02_imgOpenEye: TImage;
     procedure RectEntrarClick(Sender: TObject);
-    procedure Tab03_LayEyeClick(Sender: TObject);
     procedure lbCadastreSeClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure DogaoLanchesLogoClick(Sender: TObject);
     procedure Rectangle1Click(Sender: TObject);
     procedure FormKeyUp(Sender: TObject; var Key: Word; var KeyChar: Char;
       Shift: TShiftState);
+    procedure Tab03_SenhaEyeClick(Sender: TObject);
+    procedure Tab02_SenhaEyeClick(Sender: TObject);
   private
     function SHA1FromString(const AString: string): string;
     { Private declarations }
@@ -137,21 +139,6 @@ begin
   //{$IFEND"}}
 end;
 
-procedure TfAcesso.LayEyeClick(Sender: TObject);
-begin
-  if ImageEyeClose.Visible then
-  begin
-    ImageEyeClose.Visible := False;
-    ImageEyeOpen.Visible := True;
-    edtSenha.Password := False;
-  end else
-  begin
-    ImageEyeClose.Visible := True;
-    ImageEyeOpen.Visible := False;
-    edtSenha.Password := True;
-  end;
-end;
-
 function TfAcesso.SHA1FromString(const AString: string): string;
 var
   SHA1: TIdHashSHA1;
@@ -164,20 +151,35 @@ begin
   end;
 end;
 
-procedure TfAcesso.Tab03_LayEyeClick(Sender: TObject);
+procedure TfAcesso.Tab02_SenhaEyeClick(Sender: TObject);
 begin
-  if tab03_ImageEyeClose.Visible then
+  if Tab02_imgCloseEye.Visible then
   begin
-    tab03_ImageEyeClose.Visible := False;
-    tab03_ImageEyeOpen.Visible := True;
-    tab03_edtSenha.Password := False;
-    tab03_edtSenha2.Password := False;
+    Tab02_imgCloseEye.Visible := False;
+    Tab02_imgOpenEye.Visible := True;
+    edtSenha.Password := False;
   end else
   begin
-    tab03_ImageEyeClose.Visible := True;
-    tab03_ImageEyeOpen.Visible := False;
-    tab03_edtSenha.Password := True;
-    tab03_edtSenha2.Password := True;
+    Tab02_imgCloseEye.Visible := True;
+    Tab02_imgOpenEye.Visible := False;
+    edtSenha.Password := True;
+  end;
+end;
+
+procedure TfAcesso.Tab03_SenhaEyeClick(Sender: TObject);
+begin
+  if Tab03_imgCloseEye.Visible then
+  begin
+    Tab03_imgCloseEye.Visible := False;
+    Tab03_imgOpenEye.Visible := True;
+    Tab03_edtSenha.Password := False;
+    Tab03_edtSenha2.Password := False;
+  end else
+  begin
+    Tab03_imgCloseEye.Visible := True;
+    Tab03_imgOpenEye.Visible := False;
+    Tab03_edtSenha.Password := True;
+    Tab03_edtSenha2.Password := True;
   end;
 end;
 

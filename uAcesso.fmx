@@ -10817,24 +10817,19 @@ object fAcesso: TfAcesso
                 Size.Height = 20.000000000000000000
                 Size.PlatformDefault = False
               end
-              object LayEye: TLayout
+              object Tab02_SenhaEye: TRectangle
                 Align = Right
-                HitTest = True
+                Fill.Bitmap.WrapMode = Tile
+                Fill.Kind = Bitmap
                 Position.X = 360.000000000000000000
                 Size.Width = 50.000000000000000000
                 Size.Height = 40.000000000000000000
                 Size.PlatformDefault = False
-                ParentShowHint = False
-                ShowHint = True
-                TabOrder = 1
-                OnClick = LayEyeClick
-                object ImageEyeClose: TImage
-                  MultiResBitmap.LoadSize = 1
+                Stroke.Kind = None
+                OnClick = Tab02_SenhaEyeClick
+                object Tab02_imgCloseEye: TImage
                   MultiResBitmap = <
                     item
-                    end
-                    item
-                      Scale = 3.000000000000000000
                       Width = 128
                       Height = 128
                       PNG = {
@@ -10877,24 +10872,21 @@ object fAcesso: TfAcesso
                         8D1FA191D8CBDE55B1E8F16FEA5ABFEC8AF1BB4F0DC7F8CF2800000000000000
                         000000000000588583837F01DD9CADAAD60A8E7C0000000049454E44AE426082}
                     end>
-                  Align = Center
                   HitTest = False
-                  Margins.Left = 10.000000000000000000
-                  Margins.Top = 10.000000000000000000
-                  Margins.Right = 10.000000000000000000
-                  Margins.Bottom = 10.000000000000000000
-                  Size.Width = 30.000000000000000000
+                  MarginWrapMode = Original
+                  Margins.Left = 5.000000000000000000
+                  Margins.Top = 5.000000000000000000
+                  Margins.Right = 5.000000000000000000
+                  Margins.Bottom = 5.000000000000000000
+                  Position.X = 5.000000000000000000
+                  Position.Y = 5.000000000000000000
+                  Size.Width = 40.000000000000000000
                   Size.Height = 30.000000000000000000
                   Size.PlatformDefault = False
-                  OnClick = LayEyeClick
                 end
-                object ImageEyeOpen: TImage
-                  MultiResBitmap.LoadSize = 1
+                object Tab02_imgOpenEye: TImage
                   MultiResBitmap = <
                     item
-                    end
-                    item
-                      Scale = 2.000000000000000000
                       Width = 128
                       Height = 128
                       PNG = {
@@ -10941,13 +10933,14 @@ object fAcesso: TfAcesso
                         00000000000000000000000000000000000000000000000000000020DBD9D97F
                         08111B52352B2DDD0000000049454E44AE426082}
                     end>
-                  Align = Center
-                  Margins.Left = 10.000000000000000000
-                  Margins.Top = 10.000000000000000000
-                  Margins.Right = 15.000000000000000000
-                  Margins.Bottom = 10.000000000000000000
-                  Size.Width = 30.000000000000000000
-                  Size.Height = 30.000000000000000000
+                  HitTest = False
+                  MarginWrapMode = Original
+                  Margins.Left = 5.000000000000000000
+                  Margins.Top = 5.000000000000000000
+                  Margins.Right = 5.000000000000000000
+                  Margins.Bottom = 5.000000000000000000
+                  Size.Width = 50.000000000000000000
+                  Size.Height = 40.000000000000000000
                   Size.PlatformDefault = False
                   Visible = False
                 end
@@ -17594,6 +17587,12 @@ object fAcesso: TfAcesso
                   TabOrder = 0
                 end
               end
+              object SpeedButton1: TSpeedButton
+                ImageIndex = 1
+                Position.X = 264.000000000000000000
+                Position.Y = 128.000000000000000000
+                Text = 'b'
+              end
             end
             object Layout2: TLayout
               Align = Top
@@ -17750,24 +17749,19 @@ object fAcesso: TfAcesso
                   Size.PlatformDefault = False
                   Caret.Color = claBlack
                 end
-                object Tab03_LayEye: TLayout
+                object Tab03_SenhaEye: TRectangle
                   Align = Right
-                  HitTest = True
+                  Fill.Bitmap.WrapMode = Tile
+                  Fill.Kind = Bitmap
                   Position.X = 360.000000000000000000
                   Size.Width = 50.000000000000000000
                   Size.Height = 40.000000000000000000
                   Size.PlatformDefault = False
-                  ParentShowHint = False
-                  ShowHint = True
-                  TabOrder = 1
-                  OnClick = Tab03_LayEyeClick
-                  object Tab03_ImageEyeClose: TImage
-                    MultiResBitmap.LoadSize = 1
+                  Stroke.Kind = None
+                  OnClick = Tab03_SenhaEyeClick
+                  object Tab03_imgCloseEye: TImage
                     MultiResBitmap = <
                       item
-                      end
-                      item
-                        Scale = 3.000000000000000000
                         Width = 128
                         Height = 128
                         PNG = {
@@ -17810,24 +17804,21 @@ object fAcesso: TfAcesso
                           8D1FA191D8CBDE55B1E8F16FEA5ABFEC8AF1BB4F0DC7F8CF2800000000000000
                           000000000000588583837F01DD9CADAAD60A8E7C0000000049454E44AE426082}
                       end>
-                    Align = Center
                     HitTest = False
-                    Margins.Left = 10.000000000000000000
-                    Margins.Top = 10.000000000000000000
-                    Margins.Right = 10.000000000000000000
-                    Margins.Bottom = 10.000000000000000000
-                    Size.Width = 30.000000000000000000
+                    MarginWrapMode = Original
+                    Margins.Left = 5.000000000000000000
+                    Margins.Top = 5.000000000000000000
+                    Margins.Right = 5.000000000000000000
+                    Margins.Bottom = 5.000000000000000000
+                    Position.X = 5.000000000000000000
+                    Position.Y = 5.000000000000000000
+                    Size.Width = 40.000000000000000000
                     Size.Height = 30.000000000000000000
                     Size.PlatformDefault = False
-                    OnClick = Tab03_LayEyeClick
                   end
-                  object Tab03_ImageEyeOpen: TImage
-                    MultiResBitmap.LoadSize = 1
+                  object Tab03_imgOpenEye: TImage
                     MultiResBitmap = <
                       item
-                      end
-                      item
-                        Scale = 2.000000000000000000
                         Width = 128
                         Height = 128
                         PNG = {
@@ -17874,13 +17865,14 @@ object fAcesso: TfAcesso
                           00000000000000000000000000000000000000000000000000000020DBD9D97F
                           08111B52352B2DDD0000000049454E44AE426082}
                       end>
-                    Align = Center
-                    Margins.Left = 10.000000000000000000
-                    Margins.Top = 10.000000000000000000
-                    Margins.Right = 15.000000000000000000
-                    Margins.Bottom = 10.000000000000000000
-                    Size.Width = 30.000000000000000000
-                    Size.Height = 30.000000000000000000
+                    HitTest = False
+                    MarginWrapMode = Original
+                    Margins.Left = 5.000000000000000000
+                    Margins.Top = 5.000000000000000000
+                    Margins.Right = 5.000000000000000000
+                    Margins.Bottom = 5.000000000000000000
+                    Size.Width = 50.000000000000000000
+                    Size.Height = 40.000000000000000000
                     Size.PlatformDefault = False
                     Visible = False
                   end

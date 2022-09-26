@@ -13879,7 +13879,7 @@ object fPrincipal: TfPrincipal
       end
       object Rectangle4: TRectangle
         Align = Bottom
-        Fill.Color = claWhite
+        Fill.Color = xFFF4D78C
         Position.Y = 408.000000000000000000
         Size.Width = 450.000000000000000000
         Size.Height = 193.000000000000000000
@@ -13887,6 +13887,8 @@ object fPrincipal: TfPrincipal
         Stroke.Kind = None
         object Layout3: TLayout
           Align = Top
+          Margins.Top = 10.000000000000000000
+          Position.Y = 10.000000000000000000
           Size.Width = 450.000000000000000000
           Size.Height = 30.000000000000000000
           Size.PlatformDefault = False
@@ -13944,7 +13946,7 @@ object fPrincipal: TfPrincipal
         end
         object Layout2: TLayout
           Align = Top
-          Position.Y = 60.000000000000000000
+          Position.Y = 70.000000000000000000
           Size.Width = 450.000000000000000000
           Size.Height = 30.000000000000000000
           Size.PlatformDefault = False
@@ -13979,7 +13981,7 @@ object fPrincipal: TfPrincipal
         end
         object Layout4: TLayout
           Align = Top
-          Position.Y = 30.000000000000000000
+          Position.Y = 40.000000000000000000
           Size.Width = 450.000000000000000000
           Size.Height = 30.000000000000000000
           Size.PlatformDefault = False

@@ -113,7 +113,7 @@ begin
       dm.QueryPedido.Append;
       dm.QueryPedidoidpessoa.AsInteger    := dm.idPessoaLogada;
       dm.QueryPedidodatahora.AsDateTime   := now;
-      dm.QueryPedidovlrPedido.AsFloat     := dm.QueryPedidovlrPedido.AsFloat;
+      dm.QueryPedidovlrPedido.AsFloat     := dm.QueryProdutovalor.AsCurrency;
       dm.QueryPedidostatusPedido.AsString := 'A';
       dm.QueryPedido.Post;
 
@@ -142,11 +142,19 @@ begin
         dm.QueryPedidoItemQtdeProduto.AsInteger := StrToInt(TButtonLabel(Sender).lbTotal.Text)+1;
         dm.QueryPedidoItemVlrItem.AsFloat       := dm.QueryProdutovalor.AsCurrency;
         dm.QueryPedidoItem.Post;
+
+        vQrPedido.Edit;
+        vQrPedido.FieldByName('vlrPedido').AsCurrency := vQrPedido.FieldByName('vlrPedido').AsCurrency + dm.QueryProdutovalor.AsCurrency;
+        vQrPedido.Post;
       end else
       begin // executa se já existir registro do produto no banco.
         vQrPedidoItem.Edit;
         vQrPedidoItem.FieldByName('qtdeProduto').AsInteger := StrToInt(TButtonLabel(Sender).lbTotal.Text)+1;
         vQrPedidoItem.Post;
+
+        vQrPedido.Edit;
+        vQrPedido.FieldByName('vlrPedido').AsCurrency := vQrPedido.FieldByName('vlrPedido').AsCurrency + dm.QueryProdutovalor.AsCurrency;
+        vQrPedido.Post;
       end;
     end;
   finally
@@ -519,7 +527,6 @@ begin
     begin
       vQrPedido.Edit;
       vQrPedido.FieldByName('statuspedido').AsString := 'F';
-      vQrPedido.FieldByName('vlrPedido').AsCurrency  := StrToFloat(lbTotalGeral.Text);
       vQrPedido.Post;
 
       ShowMessage('Pedido registrado com sucesso!');
@@ -562,9 +569,18 @@ begin
       if not vQrPedidoItem.IsEmpty then
       begin // executa somente se existir o registro do produto no banco.
         if (vQrPedidoItem.FieldByName('qtdeProduto').AsInteger = 1) then
-          vQrPedidoItem.Delete
-        else
         begin
+          vQrPedido.Edit;
+          vQrPedido.FieldByName('vlrPedido').AsCurrency :=  vQrPedido.FieldByName('vlrPedido').AsCurrency - vQrPedidoItem.FieldByName('vlrItem').AsCurrency;
+          vQrPedido.Post;
+
+          vQrPedidoItem.Delete;
+        end else
+        begin
+          vQrPedido.Edit;
+          vQrPedido.FieldByName('vlrPedido').AsCurrency :=  vQrPedido.FieldByName('vlrPedido').AsCurrency - vQrPedidoItem.FieldByName('vlrItem').AsCurrency;
+          vQrPedido.Post;
+
           vQrPedidoItem.Edit;
           vQrPedidoItem.FieldByName('qtdeProduto').AsInteger := StrToInt(TButtonLabel(Sender).lbTotal.Text)-1;
           vQrPedidoItem.Post;
