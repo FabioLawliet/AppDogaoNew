@@ -57,7 +57,6 @@ type
     Tab03_edtSenha: TEdit;
     Layout5: TLayout;
     Image4: TImage;
-    SpeedButton1: TSpeedButton;
     Tab03_SenhaEye: TRectangle;
     Tab03_imgCloseEye: TImage;
     Tab03_imgOpenEye: TImage;
@@ -118,6 +117,10 @@ begin
         begin
           Key := 0;
           TabControl.ActiveTab := Tab02_Login;
+          Tab03_edtNome.Text  := '';
+          Tab03_edtemail.Text := '';
+          Tab03_edtSenha.Text := '';
+          Tab03_edtSenha2.Text := '';
         end;
       end;
     end;

@@ -23,7 +23,6 @@ type
     Tab02_Lanches: TTabItem;
     Tab03_Carrinho: TTabItem;
     RecMenuPesquisa: TRectangle;
-    Tab04_FinalizarPedido: TTabItem;
     MultiView1: TMultiView;
     btnMenu: TSpeedButton;
     SpeedButton1: TSpeedButton;
@@ -55,6 +54,7 @@ type
     Image4: TImage;
     Image5: TImage;
     Image2: TImage;
+    Label2: TLabel;
     procedure Tab02_LanchesClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure Tab03_CarrinhoClick(Sender: TObject);
@@ -63,6 +63,8 @@ type
     procedure TabPromocao02Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure Rectangle3Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
     FIdPedido: Integer;
@@ -86,7 +88,7 @@ var
 implementation
 
 uses
-  System.SysUtils, FireDAC.Comp.Client;
+  System.SysUtils, FireDAC.Comp.Client, uDadosPerfil;
 
 {$R *.fmx}
 
@@ -536,8 +538,8 @@ begin
     end;
   finally
     FreeAndNil(vQrPedido);
+    TabControl.ActiveTab := Tab02_Lanches;
     GetProdutosBase;
-    GetProdutosBaseCarrinho;
   end;
 end;
 
@@ -596,6 +598,19 @@ begin
 
   if TabControl.ActiveTab = Tab03_Carrinho then
     GetProdutosBaseCarrinho;
+end;
+
+procedure TfPrincipal.SpeedButton1Click(Sender: TObject);
+begin
+  if not assigned(fDadosPerfil) then
+    Application.CreateForm(TfDadosPerfil, fDadosPerfil);
+
+  fDadosPerfil.Show;
+end;
+
+procedure TfPrincipal.SpeedButton3Click(Sender: TObject);
+begin
+  Close;
 end;
 
 procedure TfPrincipal.Tab02_LanchesClick(Sender: TObject);
